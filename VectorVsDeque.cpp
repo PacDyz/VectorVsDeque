@@ -67,7 +67,30 @@ void functionDequePush_backTypeA()
 		deq.push_back(A{});
 	//	std::cout << deq.size() << '\n';
 }
+void functionVectorPush_backTypeA2()
+{
+	std::vector<A> vec;
+	vec.reserve(10000);
+	for (int i = 0; i < 10000; ++i)
+		vec.push_back(A{});
+}
 
+void functionVectorPush_backTypeA3()
+{
+	std::vector<A> vec;
+	vec.reserve(9998);
+	for (int i = 0; i < 10000; ++i)
+		vec.push_back(A{});
+
+}
+
+void functionVectorPush_backTypeA4()
+{
+	std::vector<int> vec;
+	vec.reserve(9998);
+	for (int i = 0; i < 10000; ++i)
+		vec.push_back(0);
+}
 
 
 int main(int argc, char **argv)
@@ -76,33 +99,49 @@ int main(int argc, char **argv)
 	return RUN_ALL_TESTS();
 }
 
-
-TEST(vectorTest1, first)
-{
-	functionVectorPush_back();
-}
-
-TEST(dequeTest1, first)
-{
-	functionDequePush_back();
-}
-
-TEST(dequeTest2, second)
+TEST(dequeTest1, shouldAdd100IntigersToDequeAndDisplay)
 {
 	functionDequeDisplay();
 }
 
-TEST(vectorTest2, second)
+TEST(vectorTest1, shouldAdd100IntigersToVectorAndDisplay)
 {
 	functionVectorDisplay();
 }
 
-TEST(vectorTest3, third)
+TEST(vectorTest2, shouldAdd10000IntigersToVectorWithOneRelalocation)
+{
+	functionVectorPush_backTypeA4();
+}
+
+TEST(vectorTest3, shouldAdd10000IntigersToVector)
+{
+	functionVectorPush_back();
+}
+
+TEST(dequeTest2, shouldAdd10000IntigersToDeque)
+{
+	functionDequePush_back();
+}
+
+TEST(vectorTest4, shouldAdd10000ObjectTypeAToVectorWithAdequateCapacityBeforeAddObject)
+{
+	functionVectorPush_backTypeA2();
+}
+
+TEST(dequeTest3, shouldAdd10000ObjectTypeAToDeque)
+{
+	functionDequePush_backTypeA();
+}
+
+TEST(vectorTest5, shouldAdd10000ObjectTypeAToVectorWithOneRelalocation)
+{
+	functionVectorPush_backTypeA3();
+}
+
+TEST(vectorTest6, shouldAdd10000ObjectTypeAToVector)
 {
 	functionVectorPush_backTypeA();
 }
 
-TEST(dequeTest3, third)
-{
-	functionDequePush_backTypeA();
-}
+
